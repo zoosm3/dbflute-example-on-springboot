@@ -13,6 +13,7 @@ import org.dbflute.util.DfTypeUtil;
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.docksidestage.dbflute.exbhv.MemberBhv;
 import org.docksidestage.dbflute.exentity.Member;
+import org.docksidestage.remote.petstore.pet.RemotePetstorePetBhv;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,9 @@ public class MemberController {
     @Autowired
     private MemberBhv memberBhv; // #dbflute: you can use DBFlute behaviors like this
 
+    @Autowired
+    private RemotePetstorePetBhv remotePetstorePetBhv;
+
     // ===================================================================================
     //                                                                              Entry
     //                                                                             =======
@@ -51,6 +55,9 @@ public class MemberController {
             cb.query().setMemberStatusCode_Equal_Formalized();
         });
         logger.debug("count: {}", count);
+
+        logger.debug("remotePetstorePetBhv.requestGet={}", remotePetstorePetBhv.requestGet(1L));
+
         return "index";
     }
 

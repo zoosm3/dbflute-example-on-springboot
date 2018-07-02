@@ -16,6 +16,7 @@
 package org.docksidestage.app.application;
 
 import org.docksidestage.dbflute.allcommon.DBFluteBeansJavaConfig;
+import org.docksidestage.remote.petstore.RemotePetstoreBeansJavaConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
@@ -30,7 +31,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @EnableAutoConfiguration
 @ComponentScan("org.docksidestage.app")
-@Import(DBFluteBeansJavaConfig.class)
+@Import({ DBFluteBeansJavaConfig.class, RemotePetstoreBeansJavaConfig.class })
 public class ExampleApplication { // #dbflute: import JavaConfig of DBFlute
 
     public static void main(String[] args) {
