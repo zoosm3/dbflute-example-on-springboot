@@ -16,7 +16,7 @@
 		<dbflute.version>1.1.8</dbflute.version>
 		<mysql.jdbc.version>5.1.46</mysql.jdbc.version>
 		<spring.version>5.0.3.RELEASE</spring.version>
-		<spring.boot.version>1.5.8.RELEASE</spring.boot.version>
+		<spring.boot.version>2.0.3.RELEASE</spring.boot.version>
 		<utflute.version>0.8.6</utflute.version>
 	</properties>
 
@@ -202,21 +202,21 @@
 		</dependency>
 
 		<!-- spring boot -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
 			<version>${spring.boot.version}</version>
-		</dependency>
-		<dependency> <!-- for thymeleaf -->
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
 			<version>${spring.boot.version}</version>
-		</dependency>
-		<dependency> <!-- for spring security -->
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
 			<version>${spring.boot.version}</version>
-		</dependency>
+        </dependency>
 
 		<!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = -->
 		<!--                                                               Partner Library -->
