@@ -1,6 +1,6 @@
 package org.docksidestage.app.application.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.docksidestage.app.web.signin.SigninService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,13 +14,16 @@ import org.springframework.security.web.authentication.ForwardAuthenticationFail
 /**
  * @author inoue on 2016/12/18.
  * @author jflute
+ * @author y.shimizu
  */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private UserDetailsService userDetailService;
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -53,9 +56,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // @formatter:on
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder()); // 既存のsampleプロジェクトに合わせる
+    @Bean
+    @Override
+    public UserDetailsService userDetailsService() {
+        return new SigninService();
     }
 
     /**
